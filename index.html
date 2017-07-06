@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to rippleTank! &#8212; rippletank 0.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Documentation" href="documentation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-rippletank">
+<h1>Welcome to rippleTank!<a class="headerlink" href="#welcome-to-rippletank" title="Permalink to this headline">¶</a></h1>
+<p>rippleTank is a simulator that aims to help students understand how waves behave
+on a ripple tank, as well as motivating the use of computational tools to solve physical problems.
+Fully written with Python, rippleTank depends on the following libraries:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.numpy.org/">NumPy</a></li>
+<li><a class="reference external" href="http://matplotlib.org/">Matplotlib</a></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="installing">
+<h2>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h2>
+<p>rippleTank is freely available on PyPI, thus can be easily installed with pip:</p>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">rippleTank</span></code></p>
+<p>The development version is hosted on GitHub, and can be installed by running the <cite>setup.py</cite>.</p>
+<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></p>
+</div>
+<div class="section" id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<p>A wave is described by the wave equation:</p>
+<p><span class="math">\(\nabla^2\psi = \dfrac{1}{v^2}\dfrac{\partial \Psi}{\partial t} \qquad \text{where } v \text{ is the propagation speed}\)</span></p>
+<p>In order to solve the differential equation, a finite difference scheme is used.</p>
+<p>Space is discretized in <cite>n_cells_x</cite> and <cite>n_cells_y</cite>, each cell has a value of
+<span class="math">\(\Psi\)</span> stored on a matrix. For every cell whose location is not a boundary:</p>
+<p><span class="math">\(\Psi^{t+1}_{i, j} = 2\Psi^{t}_{i, j} - \Psi^{t-1}_{i, j}
++ \left(\dfrac{v\Delta t}{\Delta x}\right)^2\left(\Psi^{t}_{i, j+1} -2\Psi^{t}_{i, j} + \Psi^{t}_{i, j-1}\right)
++ \left(\dfrac{v\Delta t}{\Delta y}\right)^2\left(\Psi^{t}_{i+1, j} -2\Psi^{t}_{i, j} + \Psi^{t}_{i-1, j}\right)\)</span></p>
+<p>If the boundary is closed:</p>
+<p><span class="math">\(\Psi^{t+1}_{boundary, j} = \Psi^{t}_{boundary, j}\)</span></p>
+<p><span class="math">\(\Psi^{t+1}_{i, boundary} = \Psi^{t}_{i, boundary}\)</span></p>
+<p><span class="math">\(\Psi^{t+1}_{boundary, boundary} = \Psi^{t}_{boundary, boundary}\)</span></p>
+<p>For an open boundary the following relations are applied:</p>
+<p><span class="math">\(\Psi^{t+1}_{i, 0}=\dfrac{v\Delta t}{\Delta x}\left(\Psi^t_{i, 1} - \Psi^t_{i, 0}\right) + \Psi^t_{i, 0}\)</span></p>
+<p><span class="math">\(\Psi^{t+1}_{0, j}=\dfrac{v\Delta t}{\Delta y}\left(\Psi^t_{1, j} - \Psi^t_{0, j}\right) + \Psi^t_{0, j}\)</span></p>
+<p><span class="math">\(\Psi^{t+1}_{i, \text{n_cells_x}-1}=\dfrac{v\Delta t}{\Delta x}\left(\Psi^t_{i, \text{n_cells_x}-1} - \Psi^t_{i, \text{n_cells_x}-2}\right) + \Psi^t_{i, \text{n_cells_x}-1}\)</span></p>
+<p><span class="math">\(\Psi^{t+1}_{\text{n_cells_y}-1, j}=\dfrac{v\Delta t}{\Delta y}\left(\Psi^t_{\text{n_cells_y}-1, j} - \Psi^t_{\text{n_cells_y}-2, j}\right) + \Psi^t_{\text{n_cells_y}-1, j}\)</span></p>
+<p>For a gaussian wave with open boundary conditions the result is:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/finitedifferences.png"><img alt="_images/finitedifferences.png" src="_images/finitedifferences.png" style="width: 800.0px; height: 300.0px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<p>rippleTank is divided in four scripts: <cite>masks.py</cite>, <cite>sources.py</cite>, <cite>tank.py</cite>, <cite>examples.py</cite>.
+They contain the definition of three classes: <cite>Mask</cite>, <cite>Source</cite> and <cite>rippleTank</cite>.</p>
+<p>Root class is <cite>rippleTank</cite> which defines the whole space in which the simulation will take place.
+Perturbations are included with <cite>Source</cite> objects and obstacules with <cite>Mask</cite> objects.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#masks">masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#sources">sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#module-rippleTank.tank">tank</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="_images/singleSlit.gif"><img alt="_images/singleSlit.gif" src="_images/singleSlit.gif" style="width: 45%;" /></a>
+<a class="reference internal image-reference" href="_images/breakwater.gif"><img alt="_images/breakwater.gif" src="_images/breakwater.gif" style="width: 45%;" /></a>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#simple-sine-source">Simple sine source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#single-slit">Single slit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#half-circle-close-tank">Half circle, close tank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#multiple-sources">Multiple sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#breakwater">Breakwater</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to rippleTank!</a><ul>
+<li><a class="reference internal" href="#installing">Installing</a></li>
+<li><a class="reference internal" href="#how-it-works">How it works</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="documentation.html" title="next chapter">Documentation</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Juan Barbosa.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

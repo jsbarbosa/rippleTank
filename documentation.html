@@ -1,0 +1,678 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Documentation &#8212; rippletank 0.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Welcome to rippleTank!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="masks">
+<h2>masks<a class="headerlink" href="#masks" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/mask.png"><img alt="_images/mask.png" src="_images/mask.png" style="width: 480.0px; height: 360.0px;" /></a>
+</div>
+<span class="target" id="module-rippleTank.masks"></span><dl class="class">
+<dt id="rippleTank.masks.Mask">
+<em class="property">class </em><code class="descclassname">rippleTank.masks.</code><code class="descname">Mask</code><span class="sig-paren">(</span><em>rippletank</em>, <em>rel_deep=None</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.masks.Mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Masks represent obstacules on the ripple tank. Depending on the <cite>rel_deep</cite>
+they can be seen as barriers (<cite>rel_deep=0</cite>) or simply objects that vary the deep of the tank.</p>
+<dl class="method">
+<dt id="rippleTank.masks.Mask.applyMask">
+<code class="descname">applyMask</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.masks.Mask.applyMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the mask object to the <cite>rippletank</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.masks.Mask.fromArray">
+<code class="descname">fromArray</code><span class="sig-paren">(</span><em>array</em>, <em>rel_deep=None</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.masks.Mask.fromArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mask array can assigned with and incoming 2d array.
+The array must have the same dimensions of the ripple tank, contain ones
+where no effect is wanted and zeros where the deep wants to be modified.
+If the mask object has a <cite>rel_deep</cite> or a value is set by parameter,
+zeros will be changed to <cite>rel_deep</cite>.</p>
+<dl class="docutils">
+<dt>Raises:</dt>
+<dd>Exception: &#8220;Input array does not have the ripple tank dimensions.&#8221;
+Exception: &#8220;Deep must be between 0 and 1.&#8221;</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.masks.Mask.fromFunc">
+<code class="descname">fromFunc</code><span class="sig-paren">(</span><em>func</em>, <em>args=()</em>, <em>kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.masks.Mask.fromFunc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mask array can be made by calling a function <cite>func</cite>, the first argument of the
+function needs to be the mask object, other arguments are send to the function
+with the <cite>args</cite> parameter, and the keyword arguments with <cite>kwargs</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.masks.Mask.mask">
+<code class="descname">mask</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.masks.Mask.mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>mask array</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.masks.Mask.rel_deep">
+<code class="descname">rel_deep</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.masks.Mask.rel_deep" title="Permalink to this definition">¶</a></dt>
+<dd><p>relative deep of the mask</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.masks.Mask.rippletank">
+<code class="descname">rippletank</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.masks.Mask.rippletank" title="Permalink to this definition">¶</a></dt>
+<dd><p>parent Tank object</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="rippleTank.masks.circleMask">
+<code class="descclassname">rippleTank.masks.</code><code class="descname">circleMask</code><span class="sig-paren">(</span><em>mask</em>, <em>x0</em>, <em>y0</em>, <em>r</em>, <em>width=1</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.masks.circleMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a circle centered on <cite>x0, y0</cite> with radious <cite>r</cite> and <cite>width</cite>. Background
+is made with ones and the circle with zeros.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: 2d binary array.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="rippleTank.masks.getPositions">
+<code class="descclassname">rippleTank.masks.</code><code class="descname">getPositions</code><span class="sig-paren">(</span><em>X_grid</em>, <em>Y_grid</em>, <em>xcorners</em>, <em>ycorners</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.masks.getPositions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Using the coordinates in <cite>X_grid</cite> and <cite>Y_grid</cite> returns a 2d boolean array
+of a rectangle with <cite>xcorners</cite> and <cite>ycorners</cite>.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: 2d boolean array.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="rippleTank.masks.halfCircleMask">
+<code class="descclassname">rippleTank.masks.</code><code class="descname">halfCircleMask</code><span class="sig-paren">(</span><em>mask</em>, <em>x0</em>, <em>y0</em>, <em>r</em>, <em>width=1</em>, <em>on='x'</em>, <em>direction='upper'</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.masks.halfCircleMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws half a circle centered on <cite>x0, y0</cite> with radious <cite>r</cite>, and <cite>width</cite>.
+The direction is set with the <cite>on</cite> parameter. The <cite>direction</cite> parameter tells where to point the half circle.
+The <cite>on</cite> parameter can be: <cite>x</cite>, <cite>y</cite>, <cite>X</cite>, <cite>Y</cite>. The <cite>direction</cite> parameter: <cite>upper</cite>, <cite>lower</cite>.</p>
+<p>Background is made with ones and the slit with zeros.</p>
+<dl class="docutils">
+<dt>Raises:</dt>
+<dd><p class="first">Exception: &#8220;on is not a valud location.&#8221;</p>
+<p class="last">Exception: &#8220;direction is not a valud direction.&#8221;</p>
+</dd>
+<dt>Returns:</dt>
+<dd>np.ndarray: 2d binary array.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="rippleTank.masks.rectangleMask">
+<code class="descclassname">rippleTank.masks.</code><code class="descname">rectangleMask</code><span class="sig-paren">(</span><em>mask</em>, <em>xcorners</em>, <em>ycorners</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.masks.rectangleMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a rectangle with <cite>xcorners</cite> and <cite>ycorners</cite>. Background
+is made with ones and the rectangle with zeros.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: 2d binary array.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="rippleTank.masks.singleSlit">
+<code class="descclassname">rippleTank.masks.</code><code class="descname">singleSlit</code><span class="sig-paren">(</span><em>mask</em>, <em>xcorners</em>, <em>ycorners</em>, <em>width=-1</em>, <em>on='x'</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.masks.singleSlit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a slit on the middle of a rectangle with <cite>xcorners</cite>, <cite>ycorners</cite> with <cite>width</cite>
+on the <cite>on</cite> direction. The <cite>on</cite> parameter can be: <cite>x</cite>, <cite>y</cite>, <cite>X</cite>, <cite>Y</cite>.</p>
+<p>Background is made with ones and the slit with zeros.</p>
+<dl class="docutils">
+<dt>Raises:</dt>
+<dd>Exception: &#8220;on is not a valud location.&#8221;</dd>
+<dt>Returns:</dt>
+<dd>np.ndarray: 2d binary array.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="sources">
+<h2>sources<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/sources.png"><img alt="_images/sources.png" src="_images/sources.png" style="width: 480.0px; height: 360.0px;" /></a>
+</div>
+<span class="target" id="module-rippleTank.sources"></span><dl class="class">
+<dt id="rippleTank.sources.Source">
+<em class="property">class </em><code class="descclassname">rippleTank.sources.</code><code class="descname">Source</code><span class="sig-paren">(</span><em>rippletank</em>, <em>function</em>, <em>xcorners=(-0.5</em>, <em>0.5)</em>, <em>ycorners=(-0.5</em>, <em>0.5)</em>, <em>freq=1</em>, <em>phase=0</em>, <em>amplitude=0.1</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.sources.Source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sources create perturbations on the ripple tank.</p>
+<dl class="attribute">
+<dt id="rippleTank.sources.Source.X_grid">
+<code class="descname">X_grid</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.sources.Source.X_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>x grid coordinates</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.sources.Source.Y_grid">
+<code class="descname">Y_grid</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.sources.Source.Y_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>y grid coordinates</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.sources.Source.amplitude">
+<code class="descname">amplitude</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.sources.Source.amplitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>relative amplitude of the source</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.sources.Source.evaluate">
+<code class="descname">evaluate</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.sources.Source.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receives an int number related with an iterator, evaluates <cite>function</cite> using that number.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: source values.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.sources.Source.freq">
+<code class="descname">freq</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.sources.Source.freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>frequency of the source</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.sources.Source.function">
+<code class="descname">function</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.sources.Source.function" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that describes source behavior</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.sources.Source.period">
+<code class="descname">period</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.sources.Source.period" title="Permalink to this definition">¶</a></dt>
+<dd><p>period of the source</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.sources.Source.phase">
+<code class="descname">phase</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.sources.Source.phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>phase of the source</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.sources.Source.positions">
+<code class="descname">positions</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.sources.Source.positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>position of the source</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.sources.Source.rippletank">
+<code class="descname">rippletank</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.sources.Source.rippletank" title="Permalink to this definition">¶</a></dt>
+<dd><p>parent tank</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.sources.Source.xcorners">
+<code class="descname">xcorners</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.sources.Source.xcorners" title="Permalink to this definition">¶</a></dt>
+<dd><p>xcorners of the source</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.sources.Source.ycorners">
+<code class="descname">ycorners</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.sources.Source.ycorners" title="Permalink to this definition">¶</a></dt>
+<dd><p>ycorners of the source</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="rippleTank.sources.dropSource">
+<code class="descclassname">rippleTank.sources.</code><code class="descname">dropSource</code><span class="sig-paren">(</span><em>source</em>, <em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.sources.dropSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pulse function.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: array with -1.0 values on source positions.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="rippleTank.sources.sineSource">
+<code class="descclassname">rippleTank.sources.</code><code class="descname">sineSource</code><span class="sig-paren">(</span><em>source</em>, <em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.sources.sineSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sine function.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: array with sine values on source positions.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="rippleTank.sources.squareSource">
+<code class="descclassname">rippleTank.sources.</code><code class="descname">squareSource</code><span class="sig-paren">(</span><em>source</em>, <em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.sources.squareSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Square function.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: array with square values on source positions.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-rippleTank.tank">
+<span id="tank"></span><h2>tank<a class="headerlink" href="#module-rippleTank.tank" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="rippleTank.tank.RippleTank">
+<em class="property">class </em><code class="descclassname">rippleTank.tank.</code><code class="descname">RippleTank</code><span class="sig-paren">(</span><em>xdim=(-15</em>, <em>15)</em>, <em>ydim=(-15</em>, <em>15)</em>, <em>deep=1.0</em>, <em>n_cells_x=100</em>, <em>n_cells_y=100</em>, <em>mask=1.0</em>, <em>bc='open'</em>, <em>alpha=0.45</em>, <em>units='cm'</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank" title="Permalink to this definition">¶</a></dt>
+<dd><p>RippleTank objects are the core of the simulation. They contain both sources and masks.
+The class describes the space in which the waves will move and the force acting on them.</p>
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.addMask">
+<code class="descname">addMask</code><span class="sig-paren">(</span><em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.addMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a mask to the ripple tank.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.addSource">
+<code class="descname">addSource</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.addSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Includes a source to the ripple tank.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.amplitude">
+<code class="descname">amplitude</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.amplitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>wave amplitude values</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.animate">
+<code class="descname">animate</code><span class="sig-paren">(</span><em>i</em>, <em>values</em>, <em>skip</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.animate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used by matplotlib&#8217;s FuncAnimation.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>matplotlib object: imshow.
+matplotlib object: text.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.animation_speed">
+<code class="descname">animation_speed</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.animation_speed" title="Permalink to this definition">¶</a></dt>
+<dd><p>relative reproduction speed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.applyMask">
+<code class="descname">applyMask</code><span class="sig-paren">(</span><em>frame</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.applyMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a numpy mask.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ma: masked array.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.applyMultipleMasks">
+<code class="descname">applyMultipleMasks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.applyMultipleMasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the whole effect of the masks by multiplying them.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.applySources">
+<code class="descname">applySources</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.applySources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the sources values in the amplitude array of the waves.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.ax">
+<code class="descname">ax</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.ax" title="Permalink to this definition">¶</a></dt>
+<dd><p>matplotlib axes</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.bc">
+<code class="descname">bc</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.bc" title="Permalink to this definition">¶</a></dt>
+<dd><p>boundary conditions, &#8216;open&#8217; or &#8216;close&#8217;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.calcSpeed">
+<code class="descname">calcSpeed</code><span class="sig-paren">(</span><em>values</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.calcSpeed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the propagation speed depending on the actual height of the wave.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.captureFrame">
+<code class="descname">captureFrame</code><span class="sig-paren">(</span><em>data=None</em>, <em>fig=None</em>, <em>frame=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.captureFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the rippletank&#8217;s to plot a single instant of time of <cite>data</cite>.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>matplotlib.figure: figure containing the main plot.
+matplotlib.axes: axes containing the imshow.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.complete_values">
+<code class="descname">complete_values</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.complete_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>wave amplitude + deep</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.configPlot">
+<code class="descname">configPlot</code><span class="sig-paren">(</span><em>figsize=(6</em>, <em>4.5)</em>, <em>xlabel=None</em>, <em>ylabel=None</em>, <em>cmap=&lt;matplotlib.colors.LinearSegmentedColormap object&gt;</em>, <em>vmin=None</em>, <em>vmax=None</em>, <em>cbar_label=None</em>, <em>origin='lower'</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.configPlot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configures the plot.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>matplotlib.figure: figure containing the main plot.
+matplotlib.axes: axes containing the imshow.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.deep">
+<code class="descname">deep</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.deep" title="Permalink to this definition">¶</a></dt>
+<dd><p>deep of the tank, must be positive</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.dt">
+<code class="descname">dt</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.dt" title="Permalink to this definition">¶</a></dt>
+<dd><p>dt value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.evaluateSources">
+<code class="descname">evaluateSources</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.evaluateSources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates all sources in the tank.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: 2d array with the values of the source at the i instant.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.extent">
+<code class="descname">extent</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.extent" title="Permalink to this definition">¶</a></dt>
+<dd><p>matplotlib extent parameter</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.fig">
+<code class="descname">fig</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.fig" title="Permalink to this definition">¶</a></dt>
+<dd><p>matplotlib figure</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.forbidden_pos">
+<code class="descname">forbidden_pos</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.forbidden_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>positions where sources stand</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.fps">
+<code class="descname">fps</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.fps" title="Permalink to this definition">¶</a></dt>
+<dd><p>frames per second value</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.g">
+<code class="descname">g</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.g" title="Permalink to this definition">¶</a></dt>
+<dd><p>gravity value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.getSecondPartEquation">
+<code class="descname">getSecondPartEquation</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.getSecondPartEquation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the central differences on x and y for the instant i+1.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: 2d amplitude values at the instant i+1.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.getSourcesPositions">
+<code class="descname">getSourcesPositions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.getSourcesPositions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all the positions of the sources as a boolean array.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: 2d boolean array.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.makeAnimation">
+<code class="descname">makeAnimation</code><span class="sig-paren">(</span><em>data=None</em>, <em>fig=None</em>, <em>fps=None</em>, <em>duration=None</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.makeAnimation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes an animation of <cite>data</cite>, it only uses the required frames depending
+on the duration and fps value.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>matplotlib.animation.FuncAnimation: animation of the data.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.mask">
+<code class="descname">mask</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>mask appplied to the tank</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.masked_deep">
+<code class="descname">masked_deep</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.masked_deep" title="Permalink to this definition">¶</a></dt>
+<dd><p>deep on every point</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.masks">
+<code class="descname">masks</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.masks" title="Permalink to this definition">¶</a></dt>
+<dd><p>stores masks</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.n_cells_x">
+<code class="descname">n_cells_x</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.n_cells_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of cells on x</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.n_cells_y">
+<code class="descname">n_cells_y</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.n_cells_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of cells on y</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.ratiox">
+<code class="descname">ratiox</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.ratiox" title="Permalink to this definition">¶</a></dt>
+<dd><p>finite differences quotient on x</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.ratioy">
+<code class="descname">ratioy</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.ratioy" title="Permalink to this definition">¶</a></dt>
+<dd><p>finite differences quotient on y</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.setdt">
+<code class="descname">setdt</code><span class="sig-paren">(</span><em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.setdt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the delta t value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.sim_duration">
+<code class="descname">sim_duration</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.sim_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>time to simulate</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.simulateTime">
+<code class="descname">simulateTime</code><span class="sig-paren">(</span><em>sim_duration</em>, <em>animation_speed=1.0</em>, <em>fps=24.0</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.simulateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulates an interval of time, if the animation_speed with the current fps value
+does not match the sim_duration, modifies the <cite>dt</cite> value.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: 3d array, extra dimension represents time.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.solveBorders">
+<code class="descname">solveBorders</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.solveBorders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determins the state i+1 of the boundaries using the state i.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.solveInstant">
+<code class="descname">solveInstant</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.solveInstant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solve the differential equation for a single instant of time, from i to i+1.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.solvePoints">
+<code class="descname">solvePoints</code><span class="sig-paren">(</span><em>n_instants</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.solvePoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulates <cite>n_instants</cite> of time.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: 3d array, extra dimension represents time.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.sources">
+<code class="descname">sources</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.sources" title="Permalink to this definition">¶</a></dt>
+<dd><p>stores sources</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.speed">
+<code class="descname">speed</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.speed" title="Permalink to this definition">¶</a></dt>
+<dd><p>speed of propagation on each point</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.units">
+<code class="descname">units</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.units" title="Permalink to this definition">¶</a></dt>
+<dd><p>units used</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rippleTank.tank.RippleTank.verifyData">
+<code class="descname">verifyData</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#rippleTank.tank.RippleTank.verifyData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifies if parameter data is different from None. If no simulation has between
+run, simulates 100 instants of time.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>np.ndarray: 3d array, extra dimension represent time.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.xdim">
+<code class="descname">xdim</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.xdim" title="Permalink to this definition">¶</a></dt>
+<dd><p>x dimensions of the grid</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rippleTank.tank.RippleTank.ydim">
+<code class="descname">ydim</code><em class="property"> = None</em><a class="headerlink" href="#rippleTank.tank.RippleTank.ydim" title="Permalink to this definition">¶</a></dt>
+<dd><p>y dimensions of the grid</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Documentation</a><ul>
+<li><a class="reference internal" href="#masks">masks</a></li>
+<li><a class="reference internal" href="#sources">sources</a></li>
+<li><a class="reference internal" href="#module-rippleTank.tank">tank</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to rippleTank!</a></li>
+      <li>Next: <a href="examples.html" title="next chapter">Examples</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/documentation.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Juan Barbosa.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/documentation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
