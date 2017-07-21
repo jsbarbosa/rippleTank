@@ -25,7 +25,7 @@ rippleTank is freely available on PyPI, thus can be easily installed with pip:
 
 ``pip install rippleTank``
 
-The development version is hosted on GitHub, and can be installed by running the `setup.py`.
+The development version is hosted on `GitHub <http://github.com/jsbarbosa/rippleTank>`_, and can be installed by running the `setup.py`.
 
 ``python setup.py install``
 
