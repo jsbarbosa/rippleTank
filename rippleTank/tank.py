@@ -82,8 +82,8 @@ class RippleTank():
         """
         Determins the state i+1 of the boundaries using the state i.
         """
-        ratiox = self.speed*self.dt/self.dx
-        ratioy = self.speed*self.dt/self.dy
+        ratiox = (self.speed*self.dt/self.dx)**2
+        ratioy = (self.speed*self.dt/self.dy)**2
         self.amplitude[i+1, 0] = ratioy[0]*(self.amplitude[i, 1] - self.amplitude[i, 0]) + self.amplitude[i, 0]
         self.amplitude[i+1, -1] = -ratioy[-1]*(self.amplitude[i, -1] - self.amplitude[i, -2]) + self.amplitude[i, -1]
 
